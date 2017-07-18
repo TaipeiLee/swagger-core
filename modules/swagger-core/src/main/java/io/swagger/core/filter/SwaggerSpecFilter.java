@@ -7,6 +7,7 @@ import io.swagger.oas.models.parameters.Parameter;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public interface SwaggerSpecFilter {
     boolean isOperationAllowed(
@@ -28,6 +29,13 @@ public interface SwaggerSpecFilter {
             Schema schema,
             Schema property,
             String propertyName,
+            Map<String, List<String>> params,
+            Map<String, String> cookies,
+            Map<String, List<String>> headers);
+
+    Optional<Operation> filterOperation(
+            Operation operation,
+            ApiDescription api,
             Map<String, List<String>> params,
             Map<String, String> cookies,
             Map<String, List<String>> headers);

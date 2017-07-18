@@ -7,6 +7,7 @@ import io.swagger.oas.models.parameters.Parameter;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public abstract class AbstractSpecFilter implements SwaggerSpecFilter {
     public boolean isOperationAllowed(
@@ -36,6 +37,16 @@ public abstract class AbstractSpecFilter implements SwaggerSpecFilter {
             Map<String, String> cookies,
             Map<String, List<String>> headers) {
         return true;
+    }
+
+    public Optional<Operation> filterOperation(
+            Operation operation,
+            ApiDescription api,
+            Map<String, List<String>> params,
+            Map<String, String> cookies,
+            Map<String, List<String>> headers) {
+
+        return Optional.of(operation);
     }
 
     public boolean isRemovingUnreferencedDefinitions() {

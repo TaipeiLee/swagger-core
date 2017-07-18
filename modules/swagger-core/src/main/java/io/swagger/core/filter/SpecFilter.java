@@ -17,6 +17,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -53,9 +54,11 @@ public class SpecFilter {
                 if (op != null) {
                     final Set<String> tags;
                     ApiDescription description = new ApiDescription(resourcePath, key);
-                    if (filter.isOperationAllowed(op, description, params, cookies, headers)) {
-                        // TODO
+                    Optional<Operation> filteredOp = filter.filterOperation(op, description, params, cookies, headers);
+                    if (filteredOp.isPresent()) {
+                        // TODO here smarter way, or helper to set the right op..
 //                        clonedPath.set(key, filterOperation(filter, op, params, cookies, headers));
+                        clonedPath.get(filterOperation(filter, filteredOp.get(), description, params, cookies, headers));
                         tags = allowedTags;
                     } else {
                         tags = filteredTags;

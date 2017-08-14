@@ -11,11 +11,11 @@
     <packaging>pom</packaging>
     <name>swagger-project</name>
     <version>2.0.0-SNAPSHOT</version>
-    <url>https://github.com/swagger-api/swagger-core</url>
+    <url>https://github.com/frantuma/swagger-core</url>
     <scm>
-        <connection>scm:git:git@github.com:swagger-api/swagger-core.git</connection>
-        <developerConnection>scm:git:git@github.com:swagger-api/swagger-core.git</developerConnection>
-        <url>https://github.com/swagger-api/swagger-core</url>
+        <connection>scm:git:git@github.com:frantuma/swagger-core.git</connection>
+        <developerConnection>scm:git:git@github.com:frantuma/swagger-core.git</developerConnection>
+        <url>https://github.com/frantuma/swagger-core</url>
     </scm>
     <prerequisites>
         <maven>2.2.0</maven>

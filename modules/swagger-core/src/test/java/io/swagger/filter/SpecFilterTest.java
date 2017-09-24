@@ -416,6 +416,15 @@ public class SpecFilterTest {
             fail("ModelImpl with no properties failed to filter");
         }*/
     }
+    @Test
+    public void removeBrokenRefsFail() throws IOException {
+        final OpenAPI swagger = getOpenAPI(RESOURCE_PATH);
+        assertNotNull(swagger.getComponents().getSchemas().get("PetHeader"));
+        final RemoveUnreferencedDefinitionsFilter remover = new RemoveUnreferencedDefinitionsFilter();
+        final OpenAPI filtered = new SpecFilter().filter(swagger, remover, null, null, null);
+
+        assertNotNull(filtered.getComponents().getSchemas().get("PetHeader"));
+    }
 
     @Test(enabled = false, description = "it should contain all tags in the top level Swagger object")
     public void shouldContainAllTopLevelTags() throws IOException {
